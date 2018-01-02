@@ -2,27 +2,76 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>fkgbook</title>
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="bookmark" href="favicon.ico">
-  <link rel="stylesheet" href="face.css">
-  <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
-  <script src="float.js" charset="utf-8"></script>
-  <script src="table-param.js" charset="utf-8"></script>
-  <script src="table.js" charset="utf-8"></script>
+    <meta charset="utf-8">
+    <title>fkgbook</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="bookmark" href="favicon.ico">
+    <link rel="stylesheet" href="face.css">
+
+    <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="layout.border.js" charset="utf-8"></script>
+    <script src="float.js" charset="utf-8"></script>
+
+    <script src="table-filter-attack_attrubite.js" charset="utf-8"></script>
+    <script src="table-filter-country.js" charset="utf-8"></script>
+    <script src="table-filter-oeb.js" charset="utf-8"></script>
+    <script src="table-filter-rarity.js" charset="utf-8"></script>
+    <script src="table-filter-skilltype.js" charset="utf-8"></script>
+
+    <script src="table-param.js" charset="utf-8"></script>
+    <script src="table.js" charset="utf-8"></script>
+
+    <style media="screen">
+        #center {
+            border-width: 0px 2px 0px 0px;
+            border-style: solid;
+            border-color: black;
+
+            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: hidden;
+
+            height: 100%;
+        }
+
+        #option {
+            margin: 0px 0px 10px 0px;
+        }
+
+        #table_div {
+            overflow: scroll;
+            overflow-x: hidden;
+
+            width: 100%;
+        }
+    </style>
 </head>
 
-<body>
-  <div id="option"></div>
-  <div>
-    <table id="table" border="1" cellpadding="2" cellspacing="2" width="100%">
-      <thead id="thead">
-        <tr style="cursor:pointer"></tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
-  </div>
+<body class="layout">
+    <div id="center" data-options="region:'center'">
+        <div id="option">
+
+        </div>
+        <div id="table_div">
+            <table id="table" border="1" cellpadding="2" cellspacing="0" style="width:100%;">
+                <thead id="thead">
+                    <tr style="cursor:pointer"></tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="show" data-options="region:'east', width: '329px'">
+        <img id="stand_s" src="stand_s/134204.png" />
+        <textarea id="skill" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
+        <textarea id="ability0" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
+        <textarea id="ability1" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
+        <textarea id="ability2" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
+        <textarea id="ability3" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
+    </div>
 </body>
 
 </html>
