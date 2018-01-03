@@ -86,13 +86,13 @@ function loadData() {
     function changeTableRowColor(tableRow, row_index, hover) {
         if (hover) {
             //鼠标移入时行颜色
-            tableRow.css("background-color", "#cccc00");
+            tableRow.css("background-color", "#99ccff");
         } else {
             //奇偶行不同颜色,
             if (row_index % 2 == 0) {
-                tableRow.css("background-color", "#bbf");
+                tableRow.css("background-color", "#999999");
             } else {
-                tableRow.css("background-color", "#ffc");
+                tableRow.css("background-color", "#cccccc");
             }
         }
     }
