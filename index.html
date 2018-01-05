@@ -8,18 +8,24 @@
     <link rel="bookmark" href="favicon.ico">
     <link rel="stylesheet" href="face.css">
 
-    <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="layout.border.js" charset="utf-8"></script>
-    <script src="float.js" charset="utf-8"></script>
-
-    <script src="table-filter-attack_attrubite.js" charset="utf-8"></script>
-    <script src="table-filter-country.js" charset="utf-8"></script>
-    <script src="table-filter-oeb.js" charset="utf-8"></script>
-    <script src="table-filter-rarity.js" charset="utf-8"></script>
-    <script src="table-filter-skilltype.js" charset="utf-8"></script>
-
-    <script src="table-param.js" charset="utf-8"></script>
-    <script src="table.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        var jsFiles = [
+            "jquery-3.2.1.min.js",
+            "layout.border.js",
+            "float.js",
+            "table-filter-attack_attrubite.js",
+            "table-filter-country.js",
+            "table-filter-oeb.js",
+            "table-filter-rarity.js",
+            "table-filter-skilltype.js",
+            "table-param.js",
+            "table.js",
+        ];
+        var currentTimeStamp = new Date().getTime();//防止浏览器缓存
+        for (jsFile of jsFiles) {
+            document.write("\<script type=\'text/javascript\' src=\'" + jsFile + "?" + currentTimeStamp + "\'\>\</script\>");
+        }
+    </script>
 
     <style media="screen">
         #center {
