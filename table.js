@@ -76,7 +76,7 @@ function loadData() {
     function createNewTableCell(row_index, value_fun, data) {
         var new_td = $("<td style='height:50px'></td>");
         if (value_fun === null) {
-            new_td.html(row_index);
+            new_td.html(row_index + 1);
         } else {
             new_td.html(value_fun(data));
         }
