@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 //添加数据
 function loadData() {
-    $.getJSON("masterdata.json", function(json) {
+    $.getJSON("masterdata.json?"+currentTimeStamp, function(json) {
         var version = json.version;
 
         //根据筛选条件 过滤 数据
@@ -107,7 +107,7 @@ function loadData() {
             if (json["oeb"] == 3 && json["kariBloom"]) {
                 image_id = image_id - 300000 + 1;
             }
-            $("#stand_s").attr("src", "stand_s/" + image_id + ".png");
+            $("#stand_s").attr("src", "stand_s/" + image_id + ".png?"+currentTimeStamp);
 
             var skill = json['skill'];
             $("#skill").val(skill[0] + "\r\n" + skill[1]);

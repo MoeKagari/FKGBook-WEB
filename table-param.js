@@ -7,7 +7,7 @@ var tableColumnInformationList = [
         if (json["oeb"] == 3 && json["kariBloom"]) {
             image_id = image_id - 300000 + 1;
         }
-        return "<img src='icon/" + image_id + ".png'></img>";
+        return "<img src='icon/" + image_id + ".png?"+currentTimeStamp+"'></img>";
     }],
     ["id", function(json) {
         return json["id"];
