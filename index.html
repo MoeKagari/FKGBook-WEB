@@ -6,77 +6,130 @@
     <title>fkgbook</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="bookmark" href="favicon.ico">
-    <link rel="stylesheet" href="face.css">
 
+    <script src="script/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="script/layout.border.js" charset="utf-8"></script>
     <script type="text/javascript">
         var jsFiles = [
-            "jquery-3.2.1.min.js",
-            "layout.border.js",
-            "float.js",
-            "table-filter-attack_attrubite.js",
-            "table-filter-country.js",
-            "table-filter-oeb.js",
-            "table-filter-rarity.js",
-            "table-filter-skilltype.js",
-            "table-param.js",
-            "table.js",
+            "script/fkgbook.js",
+            "script/float.js",
+
+            "script/table-filter-attack_attrubite.js",
+            "script/table-filter-country.js",
+            "script/table-filter-oeb.js",
+            "script/table-filter-rarity.js",
+            "script/table-filter-skilltype.js",
+            "script/table-param.js",
+            "script/table.js",
         ];
-        var currentTimeStamp = new Date().getTime();//防止浏览器缓存
+        var currentTimeStamp = new Date().getTime(); //防止浏览器缓存
         for (jsFile of jsFiles) {
             document.write("\<script type=\'text/javascript\' src=\'" + jsFile + "?" + currentTimeStamp + "\'\>\</script\>");
         }
     </script>
 
     <style media="screen">
-        #center {
-            border-width: 0px 2px 0px 0px;
-            border-style: solid;
-            border-color: black;
+        body {
+            margin: 0px;
+        }
 
-            overflow: scroll;
-            overflow-x: hidden;
-            overflow-y: hidden;
-
+        #bg {
+            width: 100%;
             height: 100%;
+            background: url('bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            filter: blur(150px);
+        }
+
+        #option,
+        #table,
+        textarea {
+            color: #ffffff;
+        }
+
+        #center {
+            border: 0px solid black;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        #table {
+            width: 100%;
         }
 
         #option {
             margin: 0px 0px 10px 0px;
         }
 
-        #table_div {
-            overflow: scroll;
-            overflow-x: hidden;
+        #stand_s {
+            width: 329px;
+            margin: 0px 1px;
+        }
 
+        textarea {
+            width: 329px;
+            height: 70px;
+            resize: none;
+            background: transparent;
+            border-width: 1px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        select {
+            background-color: #00000000;
+        }
+
+        #table_div {
             width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        #table_div::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        #table_div::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            border-radius: 0px;
+            background-color: #53535350;
+        }
+
+        #table_div::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            border-radius: 0px;
+            background-color: #00000000;
         }
     </style>
 </head>
 
 <body class="layout">
-    <div id="center" data-options="region:'center'">
-        <div id="option">
+    <div id="bg"></div>
 
-        </div>
-        <div id="table_div">
-            <table id="table" border="1" cellpadding="2" cellspacing="0" style="width:100%;">
-                <thead id="thead">
-                    <tr style="cursor:pointer"></tr>
-                </thead>
-                <tbody id="tbody">
-
-                </tbody>
-            </table>
-        </div>
+    <!-- 长度多2px,因为 textarea 的 左+右border = 2px-->
+    <div id="show" data-options="region:'west', width: '331px'">
+        <img id="stand_s" src="stand_s/142407.png" />
+        <textarea id="skill" readonly="readonly"></textarea>
+        <textarea id="ability0" readonly="readonly"></textarea>
+        <textarea id="ability1" readonly="readonly"></textarea>
+        <textarea id="ability2" readonly="readonly"></textarea>
+        <textarea id="ability3" readonly="readonly"></textarea>
     </div>
 
-    <div id="show" data-options="region:'east', width: '329px'">
-        <img id="stand_s" src="stand_s/134204.png" />
-        <textarea id="skill" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
-        <textarea id="ability0" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
-        <textarea id="ability1" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
-        <textarea id="ability2" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
-        <textarea id="ability3" readonly="readonly" style="height:70px;width:100%;resize:none;"></textarea>
+    <div id="center" data-options="region:'center'">
+        <div id="option"> </div>
+        <div id="table_div">
+            <table id="table" border="1" cellpadding="2" cellspacing="0">
+                <thead id="thead">
+                    <tr></tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
     </div>
 </body>
 

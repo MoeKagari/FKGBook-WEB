@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 //添加数据
 function loadData() {
-    $.getJSON("masterdata.json?"+currentTimeStamp, function(json) {
+    $.getJSON("masterdata.json?" + currentTimeStamp, function(json) {
         var version = json.version;
 
         //根据筛选条件 过滤 数据
@@ -86,13 +86,14 @@ function loadData() {
     function changeTableRowColor(tableRow, row_index, hover) {
         if (hover) {
             //鼠标移入时行颜色
-            tableRow.css("background-color", "#99ccff");
+            tableRow.css("background-color", "#99ccff20");
         } else {
+            tableRow.css("background-color", "#00000000");
             //奇偶行不同颜色,
             if (row_index % 2 == 0) {
-                tableRow.css("background-color", "#999999");
+                //tableRow.css("background-color", "#999999");
             } else {
-                tableRow.css("background-color", "#cccccc");
+                //tableRow.css("background-color", "#cccccc");
             }
         }
     }
@@ -107,7 +108,7 @@ function loadData() {
             if (json["oeb"] == 3 && json["kariBloom"]) {
                 image_id = image_id - 300000 + 1;
             }
-            $("#stand_s").attr("src", "stand_s/" + image_id + ".png?"+currentTimeStamp);
+            $("#stand_s").attr("src", "stand_s/" + image_id + ".png");
 
             var skill = json['skill'];
             $("#skill").val(skill[0] + "\r\n" + skill[1]);
@@ -128,7 +129,8 @@ function loadData() {
             },
             function() { //鼠标移开
                 changeTableRowColor($(this), row_index, false);
-            });
+            }
+        );
 
         //数据
         for (var cell_index = 0, size = tableColumnInformationList.length; cell_index < size; cell_index++) {
