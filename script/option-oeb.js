@@ -1,5 +1,6 @@
-var oebValue = 1;
-var oebEnum = {
+FKGBook.option.oeb = {};
+FKGBook.option.oeb.value = 1;
+FKGBook.option.oeb.enum = {
     "原始": 1,
     "进化": 2,
     "无开花": 13,
@@ -9,16 +10,15 @@ var oebEnum = {
     "最高进化": 11,
     "全部角色": 12
 };
-
-function oebFilter(data) {
+FKGBook.option.oeb.filter = function(data) {
     var oeb = data["oeb"];
     var kariBloom = data["kariBloom"];
     var hasBloom = data["hasBloom"];
-    switch (oebValue) {
+    switch (this.value) {
         case 1:
         case 2:
         case 3:
-            return oeb == oebValue;
+            return oeb == this.value;
         case 4:
             return oeb == 3 && kariBloom;
         case 5:

@@ -1,5 +1,6 @@
-var skillTypeValue = 0;
-var skillTypeEnum = {
+FKGBook.option.skillType = {};
+FKGBook.option.skillType.value = 0;
+FKGBook.option.skillType.enum = {
     "无": 0,
     "伤害增加-对BOSS": 11,
     "再动": 16,
@@ -34,14 +35,13 @@ var skillTypeEnum = {
     "移动力增加": 24,
     "阳光炮能量上升": 23,
     "降攻": 32
-}
-
-function skillTypeFilter(data) {
-    if (skillTypeValue == 0) return true;
+};
+FKGBook.option.skillType.filter = function(data) {
+    if (this.value == 0) return true;
     var ability = data["ability"];
     for (var index = 0; index < ability.length; index++) {
         var skillType = ability[index][0];
-        if (skillType != 0 && skillType == skillTypeValue) {
+        if (skillType != 0 && skillType == this.value) {
             return true;
         }
     }

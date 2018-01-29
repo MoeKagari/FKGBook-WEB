@@ -1,5 +1,6 @@
-var countryValue = 0;
-var countryEnum = {
+FKGBook.option.country = {};
+FKGBook.option.country.value = 0;
+FKGBook.option.country.enum = {
     "无": 0,
     "ウィンターローズ": 1,
     "バナナオーシャン": 2,
@@ -8,7 +9,6 @@ var countryEnum = {
     "リリィウッド": 5,
     "ロータスレイク": 7
 };
-
-function countryFilter(data) {
-    return countryValue == 0 || countryValue == data["country"];
+FKGBook.option.country.filter = function(data) {
+    return this.value == 0 || this.value == data["country"];
 }
