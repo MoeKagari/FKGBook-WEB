@@ -1,5 +1,7 @@
 FKGBook.table.createNewTableCell = function(row_index, value_fun, data) {
-    var new_td = $("<td style='height:50px'></td>");
+    var new_td = $("<td></td>");
+    new_td.css("padding", "0px");
+    new_td.css("border", "0px");
     if (value_fun === null) {
         new_td.html(row_index + 1);
     } else {
@@ -11,13 +13,13 @@ FKGBook.table.createNewTableCell = function(row_index, value_fun, data) {
 FKGBook.table.changeTableRowColor = function(tableRow, row_index, hover) {
     if (hover) {
         //鼠标移入时行颜色
-        tableRow.css("background-color", "#99ccff20");
+        tableRow.css("background-color", "#99ccff40" );
     } else {
         //鼠标移出时行颜色,奇偶行不同颜色
         if (row_index % 2 == 0) {
-            tableRow.css("background-color", "#99999920");
+            tableRow.css("background-color", "#99999920" );
         } else {
-            tableRow.css("background-color", "#cccccc20");
+            tableRow.css("background-color", "#cccccc20" );
         }
     }
 };
@@ -89,9 +91,10 @@ FKGBook.table.loadData = function() {
         });
 
         //清空,并添加新数据
-        $("#tbody").html("");
+        var tbody = $("#tbody");
+        tbody.html("");
         for (var row_index = 0, size = masterdata.length; row_index < size; row_index++) {
-            $("#tbody").append(FKGBook.table.createNewTableRow(row_index, masterdata[row_index]));
+            tbody.append(FKGBook.table.createNewTableRow(row_index, masterdata[row_index]));
         }
     });
 };

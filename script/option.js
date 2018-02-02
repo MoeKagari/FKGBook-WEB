@@ -48,7 +48,10 @@ FKGBook.option.addFilterPart = function(parentDiv) {
     function createNewFilterSelect(name, filterType) {
         var select = $("<select name='" + name + "'></select>");
         $.each(filterType.enum, function(key, value) {
-            select.append($("<option value='" + value + "'>" + key + "</option>"));
+            var selectItem = $("<option></option>");
+            selectItem.attr("value",value);
+            selectItem.html(key);
+            select.append(selectItem);
         });
         select.bind("change", function() {
             var value = parseInt($(this).val());
