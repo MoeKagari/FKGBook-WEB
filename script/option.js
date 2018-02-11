@@ -62,7 +62,7 @@ FKGBook.option.addFilterPart = function(parentDiv) {
         });
 
         var label = $("<label></label>");
-        label.css("margin-right","10px");
+        label.css("margin-right","20px");
         label.append(name + " : ");
         label.append(select);
         return label;

@@ -13,13 +13,13 @@ FKGBook.table.createNewTableCell = function(row_index, value_fun, data) {
 FKGBook.table.changeTableRowColor = function(tableRow, row_index, hover) {
     if (hover) {
         //鼠标移入时行颜色
-        tableRow.css("background-color", "#99ccff40" );
+        tableRow.css("background-color", "#99ccff40");
     } else {
         //鼠标移出时行颜色,奇偶行不同颜色
         if (row_index % 2 == 0) {
-            tableRow.css("background-color", "#99999920" );
+            tableRow.css("background-color", "#99999920");
         } else {
-            tableRow.css("background-color", "#cccccc20" );
+            tableRow.css("background-color", "#cccccc20");
         }
     }
 };
@@ -37,13 +37,16 @@ FKGBook.table.createNewTableRow = function(row_index, data) {
             image_id = image_id - 300000 + 1;
         }
         $("#stand_s").attr("src", "stand_s/" + image_id + ".png");
+        $("#stand").attr("src", "stand/" + image_id + ".png");
 
         var skill = json['skill'];
         $("#skill").val(skill[0] + "\r\n" + skill[1]);
+        $("#skill").css("display", "inline");
 
         var ability = json["ability"];
         for (var index = 0; index < ability.length; index++) {
             $("#ability" + index).val(ability[index][1]);
+            $("#ability" + index).css("display", ability[index][1] == "" ? "none" : "block");
         }
     });
 

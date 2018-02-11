@@ -1,5 +1,5 @@
 FKGBook.option.oeb = {};
-FKGBook.option.oeb.value = 1;
+FKGBook.option.oeb.value = 12;
 FKGBook.option.oeb.enum = {
     "原始": 1,
     "进化": 2,

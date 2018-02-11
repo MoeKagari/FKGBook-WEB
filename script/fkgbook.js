@@ -10,6 +10,15 @@ $(document).ready(function() {
     $("#option").prepend(FKGBook.option.addOebPart($("<div></div>")));
     $("#option").prepend(FKGBook.option.addFavorPart($("<div></div>")));
 
+    //点击左侧图片之后悬浮显示 stand 图片
+    $("#stand_s").bind("click",function(){
+        $("#standDiv").css("display","block");
+    });
+    //点击 standDiv 解除显示
+    $("#standDiv").bind("click",function(){
+        $("#standDiv").css("display","none");
+    });
+
     //添加列头
     for (var index = 0, length = FKGBook.tableColumnInformationList.length; index < length; index++) {
         var new_th = $("<th></th>");
@@ -21,28 +30,20 @@ $(document).ready(function() {
     FKGBook.table.loadData();
 
     function reheightTable() {
-        function marginTotalHeight(style) {
-            return parseInt(style.css("marginTop")) + parseInt(style.css("marginBottom"));
-        }
-
-        function borderTotalHeight(style) {
-            return parseInt(style.css("borderTop")) + parseInt(style.css("borderBottom"));
-        }
-
-        function paddingTotalHeight(style) {
-            return parseInt(style.css("paddingTop")) + parseInt(style.css("paddingBottom"));
-        }
-
         function extraTotalHeight(style) {
-            return marginTotalHeight(style) + borderTotalHeight(style) + paddingTotalHeight(style);
+            return parseInt(style.css("marginTop")) + parseInt(style.css("marginBottom")) +
+                parseInt(style.css("borderTop")) + parseInt(style.css("borderBottom")) +
+                parseInt(style.css("paddingTop")) + parseInt(style.css("paddingBottom"));
         }
 
         var center = $("#center");
         var option = $("#option");
         var table_div = $("#table_div");
 
-        var table_height = center.height() - option.height() - marginTotalHeight(option) - marginTotalHeight(table_div);
-        table_div.css("height", table_height + "px");
+        var table_div_height = (parseInt(center.css("height")) - extraTotalHeight(center)) -
+            (parseInt(option.css("height")) + extraTotalHeight(option)) -
+            extraTotalHeight(table_div);
+        table_div.css("height", table_div_height + "px");
     }
     reheightTable();
     $(window).resize(reheightTable);

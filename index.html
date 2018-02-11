@@ -29,48 +29,29 @@
     </script>
 
     <style media="screen">
-        body {
-            margin: 0px;
-        }
-
         #bg {
             width: 100%;
             height: 100%;
+            filter: brightness(0.4);
+            background-size: cover;
             background-image: url('bg.png');
             background-repeat: no-repeat;
             background-position: center;
-            background-size: cover;
-            filter: brightness(0.4);
         }
 
-        #center {
-            border: 0px solid black;
-            overflow: hidden;
-            height: 100%;
-        }
 
-        #table {
-            width: 100%;
-            color: #ffffff;
-        }
 
-        #option {
-            margin: 0px 0px 10px 0px;
-            color: #ffffff;
-        }
 
-        select {
-            color: #ffffff;
-            background-color: #00000000;
-        }
-
-        option{            
-            background-color: #000000bb;
+        #show {
+            padding: 10px 10px 0px 10px;
+            text-align: center;
         }
 
         #stand_s {
             width: 329px;
-            margin: 0px 1px;
+            height: 467px;
+            padding: 0px 1px;
+            cursor: pointer;
         }
 
         textarea {
@@ -79,15 +60,48 @@
             height: 70px;
             resize: none;
             background: transparent;
-            border-width: 1px;
+            border: 1px solid #88888844;
             margin: 0px;
             padding: 0px;
+            display: none;
         }
+
+
+
+
+        #center {
+            border: 0px;
+            padding: 5px 0px 5px 0px;
+            overflow: hidden;
+            height: 100%;
+        }
+
+
+
+
+        #option {
+            padding: 0px 0px 5px 0px;
+            color: #ffffff;
+        }
+
+        select {
+            color: #ffffff;
+            background-color: #00000000;
+            border: 1px solid #88888844;
+        }
+
+        option {
+            background-color: #000000bb;
+        }
+
+
+
 
         #table_div {
             width: 100%;
             overflow-y: scroll;
             overflow-x: hidden;
+            border: 1px solid #88888844;
         }
 
         #table_div::-webkit-scrollbar {
@@ -106,15 +120,50 @@
             border-radius: 0px;
             background-color: #00000000;
         }
+
+        #table {
+            width: 100%;
+            color: #ffffff;
+        }
+
+        #thead tr {
+            text-align: left;
+        }
+
+
+        #standDiv {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: none;
+
+            background-size: cover;
+            background-color: #111111aa;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            position: fixed;
+            left: 0px;
+            top: 0px;
+        }
+
+        #stand {
+            width: 960px;
+            height: 640px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -480px;
+            margin-top: -320px;
+        }
     </style>
 </head>
 
-<body class="layout">
+<body class="layout" style="margin:0px;">
     <div id="bg"></div>
 
-    <!-- 长度多2px,因为 textarea 的 左+右border = 2px-->
-    <div id="show" data-options="region:'west', width: '331px'">
-        <img id="stand_s" src="stand_s/142407.png" />
+    <div id="show" data-options="region:'west', width: '351px'">
+        <img id="stand_s" src="stand_s/160304.png" />
         <textarea id="skill" readonly="readonly"></textarea>
         <textarea id="ability0" readonly="readonly"></textarea>
         <textarea id="ability1" readonly="readonly"></textarea>
@@ -125,13 +174,17 @@
     <div id="center" data-options="region:'center'">
         <div id="option"> </div>
         <div id="table_div">
-            <table id="table" border="1" cellpadding="2" cellspacing="0">
+            <table id="table" cellpadding="2" cellspacing="0">
                 <thead id="thead">
                     <tr></tr>
                 </thead>
                 <tbody id="tbody"></tbody>
             </table>
         </div>
+    </div>
+
+    <div id="standDiv">
+        <img id="stand" src="stand/160304.png">
     </div>
 </body>
 
