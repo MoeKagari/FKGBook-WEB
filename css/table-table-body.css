@@ -1,0 +1,27 @@
+#div_body_table {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#div_body_table::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+#div_body_table::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 0px;
+  background-color: #aaaaaa80;
+}
+
+#div_body_table::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 0px;
+  background-color: #00000000;
+}
+
+#body_table {
+  width: 100%;
+  -webkit-border-vertical-spacing: 0px;
+  -webkit-border-horizontal-spacing: 1px;
+}

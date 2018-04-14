@@ -1,0 +1,17 @@
+#container_detail {
+  /* 默认不显示 */
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+#content_detail {
+  margin: 5px 5px 0px 5px;
+  height: calc(100% - 5px);
+}
+
+#show_detail {
+  height: calc(100% - 32px);
+}

@@ -10,121 +10,82 @@
   <script src="script/jquery-3.2.1.min.js" charset="utf-8"></script>
   <script type="text/javascript">
     (function() {
-      var jsFiles = [
-        "script/fkgbook.js",
-        "script/data.js",
-        "script/table.js",
-        "script/table-option.js",
-        "script/table-table.js",
-        "script/detail.js"
-      ];
+      var version = "1.0.0";
       //防止浏览器缓存
-      var currentTimeStamp = new Date().getTime();
-      for (jsFile of jsFiles) {
-        document.write("\<script type=\'text/javascript\' src=\'" + jsFile + "?" + currentTimeStamp + "\'\>\</script\>");
+      var version = "" + new Date().getTime() * 5;
+      version = version.substr(0, version.length - 7);
+      //version 每隔2000秒改变一次
+      //2000000*5 = 10000000 有7个0
+
+      for (jsFile of ["fkgbook.js",
+          "script/data-chara.js", "script/data-icon.js", "script/data-version.js", "script/data-newChara.js",
+          "script/table.js", "script/table-option.js", "script/table-table.js",
+          "script/detail.js"
+        ]) {
+        var script = "\<script type='text/javascript' src='" + jsFile + "?" + version + "'\>\</script\>";
+        document.write(script);
+      }
+
+      for (cssFile of ["fkgbook.css",
+          "css/table.css", "css/table-option.css",
+          "css/table-table.css", "css/table-table-head.css", "css/table-table-body.css",
+          "css/detail.css", "css/detail-left.css", "css/detail-right.css"
+        ]) {
+        var script = "\<link rel='stylesheet' href='" + cssFile + "?" + version + "'\>";
+        document.write(script);
       }
     })();
   </script>
-
-  <style media="screen">
-    #background {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      filter: brightness(0.4);
-      background-size: cover;
-      background-image: url('background.png?180410');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-  </style>
-  <style media="screen">
-    #center {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-    }
-
-    #div_option,
-    #table {
-      border-width: 1px;
-      border-style: solid;
-      border-color: #88888844;
-    }
-
-    #div_option {
-      margin: 10px 5px;
-    }
-
-    #table {
-      margin: 0px 5px 10px 5px;
-      text-align: center;
-      -webkit-border-vertical-spacing: 0px;
-      -webkit-border-horizontal-spacing: 0px;
-    }
-
-    #thead {
-      display: table;
-      table-layout: fixed;
-      height: 25px;
-      width: calc(100% - 1em);
-    }
-
-    #tbody {
-      display: block;
-      overflow-x: hidden;
-      overflow-y: scroll;
-    }
-
-    #tbody::-webkit-scrollbar {
-      /*  width: 15px; */
-      height: 15px;
-    }
-
-    #tbody::-webkit-scrollbar-thumb {
-      /*滚动条里面小方块*/
-      border-radius: 0px;
-      background-color: #aaaaaa80;
-    }
-
-    #tbody::-webkit-scrollbar-track {
-      /*滚动条里面轨道*/
-      border-radius: 0px;
-      background-color: #00000000;
-    }
-
-    #tbody tr {
-      width: 100%;
-      display: table;
-      table-layout: fixed;
-    }
-  </style>
-  <style media="screen">
-    #top {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: fixed;
-    }
-  </style>
 </head>
 
-<body style="margin:0px;color:#ffffff;">
-  <div id="background"></div>
-
-  <div id="center">
-    <div id="div_option"> </div>
-    <table id="table">
-      <thead id="thead">
-        <tr></tr>
-      </thead>
-      <tbody id="tbody"> </tbody>
-    </table>
+<body>
+  <div id="container_table">
+    <div class="background"></div>
+    <div id="content_table">
+      <div id="show_table">
+        <div id="div_option" class="slightBorder"></div>
+        <div id="div_table" class="slightBorder">
+          <div id="div_head_table">
+            <table id="head_table">
+              <colgroup id="head_colgroup"></colgroup>
+              <thead id="thead">
+                <tr></tr>
+              </thead>
+            </table>
+          </div>
+          <div id="div_body_table">
+            <table id="body_table">
+              <colgroup id="body_colgroup"></colgroup>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <footer id="footer_table" class="footer"></footer>
+    </div>
   </div>
 
+  <div id="container_detail">
+    <div class="background"></div>
+    <div id="content_detail">
+      <div id="show_detail" class="slightBorder">
+        <div id="div_left">
+          <img id="standS" src="stand_s/153502.png" alt="">
+          <div id="div_detail">
 
-  <div id="top">
-
+          </div>
+        </div>
+        <div id="div_right">
+          <table style="width:100%;height:100%;text-align:center;vertical-align:middle;-webkit-border-vertical-spacing:0px;-webkit-border-horizontal-spacing:0px;">
+            <tr>
+              <td><img id="stand" src="stand/153502.png" alt=""></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <footer id="footer_detail" class="footer"></footer>
+    </div>
   </div>
 </body>
 

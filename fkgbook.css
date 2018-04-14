@@ -1,0 +1,50 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  color: #ffffff;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  filter: brightness(0.4);
+  background-size: cover;
+  background-image: url('background.png?180410');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+footer {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.slightBorder {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #88888844;
+}
+
+.wiki:link, .github:link {
+  /* 未访问的链接 */
+  color: #ffffff
+}
+
+.wiki:visited, .github:visited {
+  /* 已访问的链接 */
+  color: #ffffff
+}
+
+.wiki:hover, .github:hover {
+  /* 鼠标移动到链接上 */
+  color: #ffffff
+}
+
+.wiki:active, .github:active {
+  /* 选定的链接 */
+  color: #ffffff
+}
