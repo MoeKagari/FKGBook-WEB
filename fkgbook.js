@@ -1,6 +1,7 @@
 var FKGBook = {
   "data": {
     "chara": [],
+    "allChara":[],
     "icon": {},
     "newChara": [],
     "version": ""
@@ -11,7 +12,7 @@ var FKGBook = {
   },
   "detail": {},
   "footer": {}
-};
+}
 
 var extraTotalHeight = style =>
   parseInt(style.css("marginTop")) + parseInt(style.css("marginBottom")) +
@@ -29,8 +30,8 @@ FKGBook.footer.init = function() {
   footer.append(FKGBook.data.version);
   footer.append("&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;");
   footer.append(
-    $("<a display='block' class='github' target='_blank' href='" +
-      "https://github.com/MoeKagari/fkgbook" +
-      "'>Github-MoeKagari</a>")
+    "<a class='github' target='_blank' href='" +
+    "https://github.com/MoeKagari/fkgbook" +
+    "'>Github-MoeKagari</a>"
   );
 }

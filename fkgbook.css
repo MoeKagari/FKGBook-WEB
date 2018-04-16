@@ -3,6 +3,8 @@ html, body {
   height: 100%;
   margin: 0px;
   color: #ffffff;
+  /* 最小为12px */
+  font-size: 12px;
 }
 
 .background {
@@ -18,8 +20,8 @@ html, body {
 }
 
 footer {
-  height: 30px;
-  line-height: 30px;
+  height: 20px;
+  line-height: 20px;
   text-align: center;
 }
 

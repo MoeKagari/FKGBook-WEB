@@ -18,7 +18,8 @@
       //2000000*5 = 10000000 有7个0
 
       for (jsFile of ["fkgbook.js",
-          "script/data-chara.js", "script/data-icon.js", "script/data-version.js", "script/data-newChara.js",
+          "script/data.js", "script/data-chara.js", "script/data-icon.js",
+          "script/data-version.js", "script/data-newChara.js",
           "script/table.js", "script/table-option.js", "script/table-table.js",
           "script/detail.js"
         ]) {
@@ -43,7 +44,10 @@
     <div class="background"></div>
     <div id="content_table">
       <div id="show_table">
-        <div id="div_option" class="slightBorder"></div>
+        <div id="div_option" class="slightBorder">
+          <div id="div_other_option" style="text-align:center;"></div>
+          <div id="div_oeb_option" style="text-align:center;"></div>
+        </div>
         <div id="div_table" class="slightBorder">
           <div id="div_head_table">
             <table id="head_table">
@@ -71,15 +75,16 @@
     <div id="content_detail">
       <div id="show_detail" class="slightBorder">
         <div id="div_left">
-          <img id="standS" src="stand_s/153502.png" alt="">
+          <img id="standS" src="stand_s/151913.png" alt="">
           <div id="div_detail">
 
           </div>
         </div>
         <div id="div_right">
+          <!-- table 用来使 stand 居中 -->
           <table style="width:100%;height:100%;text-align:center;vertical-align:middle;-webkit-border-vertical-spacing:0px;-webkit-border-horizontal-spacing:0px;">
             <tr>
-              <td><img id="stand" src="stand/153502.png" alt=""></td>
+              <td><img id="stand" src="stand/151913.png" alt=""></td>
             </tr>
           </table>
         </div>
