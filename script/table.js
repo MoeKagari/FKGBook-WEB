@@ -6,25 +6,22 @@ FKGBook.table.tableColumnInfoArray = [ //
     "style": {
       "padding": "0px",
       "text-align": "center"
-    }
+    },
+    "isTableRowNumber": true
   },
   {
     "name": "",
-    "getValue": data => {
-      var img = "<img src='data:image/png;base64," +
-        FKGBook.data.icon["chara" + data.id] +
-        "' style='display:block;padding:0px;margin:3px auto;'></img>";
-      return img;
-    },
+    "getValue": data => FKGBook.data.getCharaIconByCharaId(data.id),
     "width": "70px",
     "style": {
-      "padding": "0px"
+      "padding": "0px",
+      "text-align": "center"
     }
   },
   {
     "name": "id",
     "getValue": data => data.id,
-    "width": "100px",
+    "width": "80px",
     "style": {
       "padding": "0px",
       "text-align": "center"
@@ -39,19 +36,19 @@ FKGBook.table.tableColumnInfoArray = [ //
   {
     "name": "国家",
     "getValue": data => data.country,
-    "width": "170px",
+    "width": "200px",
     "style": {}
   },
   {
     "name": "稀有度",
-    "getValue": data => "★★★★★★★★★★".substr(0, data.rarity),
-    "width": "100px",
+    "getValue": data => data.rarity + " " + FKGBook.data.getRarityString(data.rarity),
+    "width": "150px",
     "style": {}
   },
   {
     "name": "属性",
     "getValue": data => data.attackAttribute,
-    "width": "100px",
+    "width": "50px",
     "style": {
       "padding": "0px",
       "text-align": "center"
@@ -60,54 +57,54 @@ FKGBook.table.tableColumnInfoArray = [ //
   {
     "name": "移动力",
     "getValue": data => data.move,
-    "width": "80px",
-    "style": {}
-  },
-  {
-    "name": "HP",
-    "getValue": data => data.hp[0],
-    "width": "80px",
-    "style": {}
-  },
-  {
-    "name": "攻击力",
-    "getValue": data => data.attack[0],
-    "width": "80px",
-    "style": {}
-  },
-  {
-    "name": "防御力",
-    "getValue": data => data.defense[0],
-    "width": "80px",
-    "style": {}
-  },
-  {
-    "name": "综合力",
-    "getValue": data => data.power[0],
-    "width": "80px",
-    "style": {}
-  },
-  {
-    "name": "状态",
-    "getValue": data => data.state,
-    "width": "100px",
-    "style": {}
-  },
-  {
-    "name": "版本",
-    "getValue": data => data.version,
-    "width": "180px",
+    "width": "58px",
     "style": {
       "padding": "0px",
       "text-align": "center"
     }
   },
   {
-    "name": "",
-    "getValue": data => {
-      var url = "http://xn--eckq7fg8cygsa1a1je.xn--wiki-4i9hs14f.com/index.php\?" + data.name;
-      return "<a class='wiki' target='_blank' href='" + url + "'>WIKI</a>";
-    },
+    "name": "HP",
+    "getValue": data => data.hp[0],
+    "width": "58px",
+    "style": {}
+  },
+  {
+    "name": "攻击力",
+    "getValue": data => data.attack[0],
+    "width": "58px",
+    "style": {}
+  },
+  {
+    "name": "防御力",
+    "getValue": data => data.defense[0],
+    "width": "58px",
+    "style": {}
+  },
+  {
+    "name": "综合力",
+    "getValue": data => data.power[0],
+    "width": "58px",
+    "style": {}
+  },
+  {
+    "name": "状态",
+    "getValue": data => data.state,
+    "width": "150px",
+    "style": {}
+  },
+  {
+    "name": "版本",
+    "getValue": data => data.version,
+    "width": "150px",
+    "style": {
+      "padding": "0px",
+      "text-align": "center"
+    }
+  },
+  {
+    "name": "wiki",
+    "getValue": data => FKGBook.data.getWikiUrlByCharaName(data.name),
     "width": "80px",
     "style": {
       "padding": "0px",
@@ -115,17 +112,37 @@ FKGBook.table.tableColumnInfoArray = [ //
     },
     "notHaveClickEvent": true
   }
-];
+]
 
 FKGBook.table.init = function() {
   FKGBook.table.option.init();
   FKGBook.table.table.init();
-};
-
-FKGBook.table.show = function(data) {
-  //$("#background").after($("#center")); // 交换位置
+  FKGBook.table.refresh()
 }
 
-FKGBook.table.hide = function() {
-  //$("#center").after($("#background")); // 交换位置
+FKGBook.table.refresh = function() {
+  for (chara of $(".chara")) {
+    chara = $(chara);
+    chara.css("display", FKGBook.table.option.filter(chara) ? "table-row" : "none");
+  }
+
+  FKGBook.table.refreshTableRowBackgroundColor();
+  FKGBook.table.refreshTableRowNumber();
 }
+
+FKGBook.table.refreshTableRowBackgroundColor = function() {
+  $(".chara:visible:odd").css("background-color", FKGBook.table.table.tableRowBackgroundColor.odd);
+  $(".chara:visible:even").css("background-color", FKGBook.table.table.tableRowBackgroundColor.even);
+}
+
+FKGBook.table.refreshTableRowNumber = function() {
+  var row_index = 1;
+  for (td_tableRowNumber of $(".chara:visible .tableRowNumber")) {
+    $(td_tableRowNumber).html(row_index);
+    row_index++;
+  }
+}
+
+FKGBook.table.show = function(data) {}
+
+FKGBook.table.hide = function() {}

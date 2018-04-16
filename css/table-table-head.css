@@ -1,6 +1,7 @@
 #div_head_table {
   /* 滚动条宽度 */
   padding-right: 15px;
+  height: 30px;
 }
 
 #head_table {
@@ -10,5 +11,6 @@
 }
 
 #thead tr {
+  /* 和 div_head_table height 一样 */
   height: 30px;
 }

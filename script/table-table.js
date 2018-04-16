@@ -19,25 +19,37 @@ FKGBook.table.table.init = function() {
     thead_tr.append(new_th);
   }
 
-  //添加 数据
-  var tbody = $("#tbody");
-  var row_index = 0;
+  //解析 raw 数据
   for (dataLayer0Data of FKGBook.data.chara) {
     for (dataLayer1Data of dataLayer0Data.group) {
       for (dataLayer2Data of dataLayer1Data.group) {
-        tbody.append(FKGBook.table.table.createNewTableRow(row_index, {
-          "data": dataLayer2Data,
-          "groupData": dataLayer0Data
-        }));
-        row_index++;
+        FKGBook.data.allChara.push({
+          "currentCharaData": dataLayer2Data,
+          "charaGroupData": dataLayer0Data
+        });
       }
     }
+  }
+
+  //按照图鉴编号排序,相等则按照oeb排序
+  FKGBook.data.allChara = FKGBook.data.allChara.sort(function(a, b) {
+    var result = b.currentCharaData["bid"] - a.currentCharaData["bid"];
+    if (result == 0) {
+      result = a.currentCharaData["oeb"] - b.currentCharaData["oeb"];
+    }
+    return result;
+  });
+
+  //向 table 添加数据
+  var tbody = $("#tbody");
+  for (var row_index = 0, length = FKGBook.data.allChara.length; row_index < length; row_index++) {
+    tbody.append(FKGBook.table.table.createNewTableRow(row_index, FKGBook.data.allChara[row_index]));
   }
 
   //明确设定 div_body_table高度 ,否则没有滚动条
   FKGBook.table.table.reheightTable();
   $(window).resize(FKGBook.table.table.reheightTable);
-};
+}
 
 //改变 table body height
 FKGBook.table.table.reheightTable = function() {
@@ -48,13 +60,13 @@ FKGBook.table.table.reheightTable = function() {
     extraTotalHeight(div_option) - extraTotalHeight(div_table);
   div_table.css("height", div_table_height + "px");
 
-  var div_body_table_height = div_table_height - $("#thead").height();
+  var div_body_table_height = div_table_height - $("#div_head_table").height();
   $("#div_body_table").css("height", div_body_table_height + "px");
 }
 
 //创建一行数据
 FKGBook.table.table.createNewTableRow = function(row_index, data_dump) {
-  var data = data_dump.data;
+  var data = data_dump.currentCharaData;
 
   var new_tr = $("<tr></tr>");
   new_tr.addClass("chara");
@@ -63,9 +75,11 @@ FKGBook.table.table.createNewTableRow = function(row_index, data_dump) {
 
   //添加 属性
   new_tr.attr("isEventChara", data.isEventChara);
-
-  //初始化默认行颜色
-  FKGBook.table.table.changeTableRowColor(new_tr, row_index, false);
+  new_tr.attr("notHaveBloom", data.notHaveBloom);
+  new_tr.attr("mostLevel", data.mostLevel);
+  new_tr.attr("oeb", data.oeb);
+  new_tr.attr("kariBloom", data.kariBloom);
+  new_tr.attr("bloomChara", data.bloomChara);
 
   //鼠标移动到行变色
   new_tr.hover(
@@ -80,6 +94,8 @@ FKGBook.table.table.createNewTableRow = function(row_index, data_dump) {
     var new_td = $("<td>" + tableColumnInfo.getValue(data, row_index) + "</td>");
     new_td.css("padding", "0px 0px 0px 10px");
     new_td.css(tableColumnInfo.style);
+    if (tableColumnInfo.isTableRowNumber) new_td.addClass("tableRowNumber");
+
     //点击table行时,显示 detail
     if (!tableColumnInfo.notHaveClickEvent) {
       new_td.bind("click", () => {
@@ -87,6 +103,7 @@ FKGBook.table.table.createNewTableRow = function(row_index, data_dump) {
         FKGBook.table.hide();
       });
     }
+
     new_tr.append(new_td);
   }
 
@@ -99,7 +116,7 @@ FKGBook.table.table.tableRowBackgroundColor = {
   "hover": "#99ccff48", //行 - 鼠标移入
   "odd": "#99999930", //奇数行
   "even": "#99999910" //偶数行
-};
+}
 
 //改变行 background color
 FKGBook.table.table.changeTableRowColor = function(tbody_tr, row_index, hover) {
@@ -114,4 +131,4 @@ FKGBook.table.table.changeTableRowColor = function(tbody_tr, row_index, hover) {
       tbody_tr.css("background-color", FKGBook.table.table.tableRowBackgroundColor.odd);
     }
   }
-};
+}
