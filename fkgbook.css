@@ -14,7 +14,7 @@ html, body {
   z-index: -1;
   filter: brightness(0.4);
   background-size: cover;
-  background-image: url('background.png?180410');
+  background-image: url('background.png?180416');
   background-repeat: no-repeat;
   background-position: center;
 }
