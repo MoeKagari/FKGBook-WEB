@@ -114,7 +114,7 @@ FKGBook.table.table.createNewTableRow = function(row_index, data_dump) {
 FKGBook.table.table.tableRowBackgroundColor = {
   "header": "#09294a88", //列头
   "hover": "#99ccff48", //行 - 鼠标移入
-  "odd": "#99999930", //奇数行
+  "odd": "#99999920", //奇数行
   "even": "#99999910" //偶数行
 }
 

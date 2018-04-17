@@ -25,12 +25,6 @@ footer {
   text-align: center;
 }
 
-.slightBorder {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #88888844;
-}
-
 .wiki:link, .github:link {
   /* 未访问的链接 */
   color: #ffffff

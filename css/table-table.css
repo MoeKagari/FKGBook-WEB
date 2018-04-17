@@ -1,4 +1,7 @@
 #div_table {
   margin: 0px;
   text-align: left;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
 }
