@@ -2,96 +2,86 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>fkgbook</title>
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="bookmark" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>fkgbook</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="bookmark" href="favicon.ico">
 
-  <script src="script/jquery-3.2.1.min.js" charset="utf-8"></script>
-  <script type="text/javascript">
-    (function() {
-      var version = "1.0.0";
-      //防止浏览器缓存
-      var version = "" + new Date().getTime() * 5;
-      version = version.substr(0, version.length - 7);
-      //version 每隔2000秒改变一次
-      //2000000*5 = 10000000 有7个0
+    <script src="script/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        (function() {
+            var version = "" + new Date().getTime() * 5;
+            version = version.substr(0, version.length - 7);
+            //防止浏览器缓存
+            //version 每隔2000秒改变一次
+            //2000000*5 = 10000000 有7个0
 
-      for (jsFile of ["fkgbook.js",
-          "script/data.js", "script/data-chara.js", "script/data-icon.js",
-          "script/data-version.js", "script/data-newChara.js",
-          "script/table.js", "script/table-option.js", "script/table-table.js",
-          "script/detail.js"
-        ]) {
-        var script = "\<script type='text/javascript' src='" + jsFile + "?" + version + "'\>\</script\>";
-        document.write(script);
-      }
+            for (jsFile of ["fkgbook.js",
+                    "script/data.js", "script/data-chara.js", "script/data-icon.js",
+                    "script/data-version.js", "script/data-newChara.js",
+                    "script/table.js",
+                    "script/table-option.js", "script/table-option-button.js", "script/table-option-select.js",
+                    "script/table-table.js",
+                    "script/detail.js"
+                ]) {
+                var script = document.createElement("script");
+                script.rel = "text/javascript";
+                script.src = jsFile + "?" + version;
+                document.write(script.outerHTML);
+            }
 
-      for (cssFile of ["fkgbook.css",
-          "css/table.css", "css/table-option.css",
-          "css/table-table.css", "css/table-table-head.css", "css/table-table-body.css",
-          "css/detail.css", "css/detail-left.css", "css/detail-right.css"
-        ]) {
-        var script = "\<link rel='stylesheet' href='" + cssFile + "?" + version + "'\>";
-        document.write(script);
-      }
-    })();
-  </script>
+            for (cssFile of ["fkgbook.css",
+                    "css/table.css", "css/table-option.css",
+                    "css/table-table.css", "css/table-table-head.css", "css/table-table-body.css",
+                    "css/detail.css"
+                ]) {
+                var link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = cssFile + "?" + version;
+                document.write(link.outerHTML);
+            }
+        })();
+    </script>
 </head>
 
 <body>
-  <div id="container_table">
+    <!-- background -->
     <div class="background"></div>
-    <div id="content_table">
-      <div id="show_table">
-        <div id="div_option" class="slightBorder">
-          <div id="div_other_option" style="text-align:center;"></div>
-          <div id="div_oeb_option" style="text-align:center;"></div>
-        </div>
-        <div id="div_table" class="slightBorder">
-          <div id="div_head_table">
-            <table id="head_table">
-              <colgroup id="head_colgroup"></colgroup>
-              <thead id="thead">
-                <tr></tr>
-              </thead>
-            </table>
-          </div>
-          <div id="div_body_table">
-            <table id="body_table">
-              <colgroup id="body_colgroup"></colgroup>
-              <tbody id="tbody">
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <footer id="footer_table" class="footer"></footer>
-    </div>
-  </div>
 
-  <div id="container_detail">
-    <div class="background"></div>
-    <div id="content_detail">
-      <div id="show_detail" class="slightBorder">
-        <div id="div_left">
-          <img id="standS" src="stand_s/151913.png" alt="">
-          <div id="div_detail">
-
-          </div>
+    <!-- container_table -->
+    <div id="container_table">
+        <!-- option -->
+        <div id="div_option">
+            <div id="div_option_1" style="text-align:center;margin:0px 0px 0px 0px;"></div>
+            <div id="div_option_2" style="text-align:center;margin:2px 0px 2px 0px;"></div>
+            <div id="div_option_3" style="text-align:center;margin:0px 0px 0px 0px;"></div>
         </div>
-        <div id="div_right">
-          <!-- table 用来使 stand 居中 -->
-          <table style="width:100%;height:100%;text-align:center;vertical-align:middle;-webkit-border-vertical-spacing:0px;-webkit-border-horizontal-spacing:0px;">
-            <tr>
-              <td><img id="stand" src="stand/151913.png" alt=""></td>
-            </tr>
-          </table>
+        <!-- table -->
+        <div id="div_table">
+            <!-- head table -->
+            <div id="div_head_table">
+                <table id="head_table">
+                    <colgroup id="head_colgroup"></colgroup>
+                    <thead id="thead">
+                        <tr></tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- body table -->
+            <div id="div_body_table">
+                <table id="body_table">
+                    <colgroup id="body_colgroup"></colgroup>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
-      <footer id="footer_detail" class="footer"></footer>
     </div>
-  </div>
+
+    <!-- container_detail -->
+    <div id="container_detail">
+
+    </div>
 </body>
 
 </html>
