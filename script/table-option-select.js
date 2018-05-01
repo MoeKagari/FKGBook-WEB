@@ -55,9 +55,6 @@ FKGBook.table.option.select.selectInfoGroupArray = [{
 }, null, {
     "name": "能力",
     "items": [{
-        'text': '复生',
-        'value': '22'
-    }, {
         'text': '降攻',
         'value': '32'
     }, {
@@ -88,6 +85,9 @@ FKGBook.table.option.select.selectInfoGroupArray = [{
         'text': '伤害增加(BOSS)',
         'value': '11'
     }, {
+        'text': '回复(一定条件)',
+        'value': '22'
+    }, {
         'text': '再动',
         'value': '16'
     }, {
@@ -103,7 +103,7 @@ FKGBook.table.option.select.selectInfoGroupArray = [{
         'text': '攻击力上升',
         'value': '1'
     }, {
-        'text': '攻击力上升(30%*回合数)',
+        'text': '攻击力上升(回合数)',
         'value': '38'
     }, {
         'text': '攻击力上升(BOSS战)',
@@ -171,11 +171,18 @@ FKGBook.table.option.select.init = function() {
             continue;
         }
 
-        var select = $("<select style='min-width:50px' name='" + selectInfoGroup.name + "'></select>"); {
+        var select = $("<select name='" + selectInfoGroup.name + "'></select>"); {
             select.bind("change", () => FKGBook.table.refresh());
-            select.append("<option value='null'>无</option>");
+            select.css({
+                "min-width": "50px",
+                "color": "#aaaaaaaa",
+                "background-color": "#00000000",
+                "border": "1px solid #88888844"
+            });
+            select.append("<option style='background-color:#000000bb;' value='null'>无</option>");
             for (item of selectInfoGroup.items) {
-                select.append("<option value='" + item.value + "'>" + item.text + "</option>");
+                select.append("<option style='background-color:#000000bb;' " +
+                    "value='" + item.value + "'>" + item.text + "</option>");
             }
         }
 
@@ -184,18 +191,18 @@ FKGBook.table.option.select.init = function() {
     }
 
     //重置按钮
-    var button_reset = $("<button id='button_reset'>重置</button>");
+    var button_reset = $("<button style='opacity:0.4;' id='button_reset'>重置</button>");
     button_reset.bind("click", () => {
         for (selectInfoGroup of FKGBook.table.option.select.selectInfoGroupArray) {
             if (selectInfoGroup == null) continue;
             $("select[name='" + selectInfoGroup.name + "']").val("null");
-            FKGBook.table.refresh();
         }
+        FKGBook.table.refresh();
     });
     parent.append(button_reset);
 }
 
-FKGBook.table.option.select.filter = function() {
+FKGBook.table.option.select.getFilter = function() {
     var rarity_value = $("select[name='稀有度']").val();
     var attackAttribute_value = $("select[name='属性']").val();
     var country_value = $("select[name='国家']").val();
@@ -222,7 +229,7 @@ FKGBook.table.option.select.filter = function() {
                     return true;
                 }
             }
+            return false;
         }
-        return false;
     };
 }

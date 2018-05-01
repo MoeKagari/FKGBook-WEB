@@ -177,8 +177,7 @@ FKGBook.table.option.button.init = function() {
                 parent.append("&nbsp;&nbsp;");
                 continue;
             }
-
-            var input = $("<input style='margin:auto 0px;vertical-align:middle;'></input>"); {
+            var input = $("<input style='opacity:0.4;margin:auto 0px;vertical-align:middle;'></input>"); {
                 input.attr("name", buttonInfoGroup.name);
                 input.attr("type", buttonInfoGroup.type);
                 input.attr("value", buttonInfo.value);
@@ -186,7 +185,6 @@ FKGBook.table.option.button.init = function() {
                 for (c of buttonInfo.class ? buttonInfo.class : []) input.addClass(c);
                 input.bind("click", getClickEventFunction(buttonInfo.clickEventInfos));
             }
-
             parent.append(input);
             if (buttonInfo.text) {
                 parent.append("<label for='" + buttonInfo.value + "'>" + buttonInfo.text + "</label>");
@@ -199,7 +197,7 @@ FKGBook.table.option.button.init = function() {
     $(".option_oeb_normal").prop("checked", true);
 }
 
-FKGBook.table.option.button.filter = function() {
+FKGBook.table.option.button.getFilter = function() {
     var isInputSelected = input => $("#" + input).prop("checked");
     var haveEventChara_checked = isInputSelected("haveEventChara");
     var notEventChara_checked = isInputSelected("notEventChara");
@@ -213,12 +211,12 @@ FKGBook.table.option.button.filter = function() {
     var sublimationEvolutionChara_checked = isInputSelected("sublimationEvolutionChara");
     var sublimationBloomChara_checked = isInputSelected("sublimationBloomChara");
 
-    var filter_eventchara = function(tbody_tr) {
+    var filter_eventchara = tbody_tr => {
         return haveEventChara_checked ||
             (notEventChara_checked && tbody_tr.dataset.isEventChara == "false") ||
             (onlyEventChara_checked && tbody_tr.dataset.isEventChara == "true");
     }
-    var filter_oeb = function(tbody_tr) {
+    var filter_oeb = tbody_tr => {
         return (notHaveBloomChara_checked && tbody_tr.dataset.notHaveBloom == "true") ||
             (mostLevelChara_checked && tbody_tr.dataset.mostLevel == "true") ||
             (

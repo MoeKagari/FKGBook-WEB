@@ -2,8 +2,8 @@
     /* 默认显示 */
     display: block;
     margin: 5px 5px;
-    height: calc(100% - 10px);
-    width: calc(100% - 10px);
+    height: calc(100% - 5px - 5px);
+    width: calc(100% - 5px - 5px);
     position: fixed;
     z-index: 0;
 }

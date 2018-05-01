@@ -2,7 +2,8 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0px;
-    color: #ffffff;
+    padding: 0px;
+    color: #aaaaaaaa;
     font-size: 14px;
     user-select: none;
 }
@@ -14,27 +15,11 @@ html, body {
     z-index: -1;
     filter: brightness(0.4);
     background-size: cover;
-    background-image: url('background.png?180416');
+    background-image: url('background.jpg?180501');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-a:link {
-    /* 未访问的链接 */
-    color: #ffffff
-}
-
-a:visited {
-    /* 已访问的链接 */
-    color: #ffffff
-}
-
-a:hover {
-    /* 鼠标移动到链接上 */
-    color: #ffffff
-}
-
-a:active {
-    /* 选定的链接 */
-    color: #ffffff
+a:link, a:visited, a:hover, a:active {
+    color: inherit;
 }

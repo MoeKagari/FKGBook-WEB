@@ -1,0 +1,51 @@
+.detail_2_child {
+    width: 100%;
+    margin: 0px auto 15px auto;
+}
+
+.detail_2_child.end {
+    margin: 0px auto;
+}
+
+#detail_chara_base_data {
+    display: grid;
+    grid-template-columns: 60px 20px 1fr;
+    grid-template-rows: 1fr;
+}
+
+#detail_chara_favor_data {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+#detail_chara_favor_data b {
+    text-align: right;
+}
+
+#detail_chara_favor_data b.row_head {
+    text-align: left;
+}
+
+#detail_chara_skill_data {
+    height: 57px;
+}
+
+#detail_chara_ability_data {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: repeat(4, 57px);
+    grid-row-gap: 5px;
+}
+
+#detail_chara_ability_data img {
+    display: block;
+    padding: 0px;
+    margin: auto;
+}
+
+#detail_chara_ability_data p {
+    margin: 0px;
+    padding: 0px 0px 0px 5px;
+    text-align: left;
+}
