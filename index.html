@@ -9,11 +9,8 @@
 
     <script src="script/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-        var version = "" + new Date().getTime() * 5;
-        version = version.substr(0, version.length - 7);
+        var version = "" + new Date().getTime();
         //防止浏览器缓存
-        //version 每隔2000秒改变一次
-        //2000000*5 = 10000000 有7个0
 
         for (cssFile of ["fkgbook.css",
                 "css/table.css", "css/table-option.css",
