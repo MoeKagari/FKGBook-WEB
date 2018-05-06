@@ -79,7 +79,7 @@ FKGBook.detail.updateVersionData = function(currentCharaData, charaGroupData) {
     for (var index = 0, length = charaGroupData.group.length; index < length; index++) {
         var rawCharaGroupDataVersion = charaGroupData.group[index];
 
-        var version = rawCharaGroupDataVersion.version;
+        var version = rawCharaGroupDataVersion.chara_version;
         if (version == "") version = "通常";
         detail_chara_version_data.append(
             "<dt><h3 style='margin:0px;margin-bottom:2px;'>" +

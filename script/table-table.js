@@ -35,12 +35,9 @@ FKGBook.table.table.reheightTable = function() {
     var div_option = $("#div_option");
     var div_table = $("#div_table");
 
-    var div_table_height = $("#container_table").height() -
+    var div_body_table_height = $("#container_table").height() -
         (div_option.height() + FKGBook.tool.extraTotalHeight(div_option)) -
-        FKGBook.tool.extraTotalHeight(div_table);
-    div_table.css("height", div_table_height + "px");
-
-    var div_body_table_height = div_table_height - $("#div_head_table").height();
+        FKGBook.tool.extraTotalHeight(div_table) - $("#div_head_table").height();
     $("#div_body_table").css("height", div_body_table_height + "px");
 }
 

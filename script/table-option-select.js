@@ -174,6 +174,7 @@ FKGBook.table.option.select.init = function() {
         var select = $("<select name='" + selectInfoGroup.name + "'></select>"); {
             select.bind("change", () => FKGBook.table.refresh());
             select.css({
+                "outline": "none",
                 "min-width": "50px",
                 "color": "#aaaaaaaa",
                 "background-color": "#00000000",

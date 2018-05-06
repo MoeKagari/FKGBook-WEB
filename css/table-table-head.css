@@ -1,17 +1,15 @@
 #div_head_table {
     /* 滚动条宽度 */
     padding-right: 15px;
-    height: 30px;
 }
 
 #head_table {
     width: 100%;
-    height: 30px;
     -webkit-border-vertical-spacing: 0px;
-    -webkit-border-horizontal-spacing: 1px;
+    -webkit-border-horizontal-spacing: 0px;
 }
 
-#thead tr {
+.ht {
     height: 30px;
 }
 
