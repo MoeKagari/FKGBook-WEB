@@ -129,7 +129,7 @@ FKGBook.detail.createNewCharaIcon = function(charaData) {
         "margin": "auto",
         "cursor": "pointer"
     });
-    div_chara_icon.attr("src", "data:image/png;base64," + FKGBook.data.icon["chara" + charaData.id]);
+    div_chara_icon.attr("src", "icon/" + charaData.id + ".png");
 
     return div_chara_icon;
 }

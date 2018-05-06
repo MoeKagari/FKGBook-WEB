@@ -158,10 +158,16 @@ FKGBook.table.option.button.buttonInfoGroupArray = [ //
 ];
 
 FKGBook.table.option.button.init = function() {
-    var getClickEventFunction = clickEventInfos => {
+    var getClickEventFunction = (name, clickEventInfos) => {
         return () => {
+            var needRefresh = false;
             for (clickEventInfo of clickEventInfos ? clickEventInfos : []) {
-                $("." + clickEventInfo.target).prop("checked", clickEventInfo.value);
+                var targetValue = clickEventInfo.value;
+                for (targetButton of $("." + clickEventInfo.target)) {
+                    targetButton = $(targetButton);
+                    var currentValue = targetButton.prop("checked");
+                    targetButton.prop("checked", targetValue);
+                }
             }
             FKGBook.table.refresh();
         };
@@ -183,7 +189,7 @@ FKGBook.table.option.button.init = function() {
                 input.attr("value", buttonInfo.value);
                 input.attr("id", buttonInfo.value);
                 for (c of buttonInfo.class ? buttonInfo.class : []) input.addClass(c);
-                input.bind("click", getClickEventFunction(buttonInfo.clickEventInfos));
+                input.bind("click", getClickEventFunction(buttonInfoGroup.name, buttonInfo.clickEventInfos));
             }
             parent.append(input);
             if (buttonInfo.text) {

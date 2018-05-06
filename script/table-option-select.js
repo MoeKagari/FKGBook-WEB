@@ -79,7 +79,7 @@ FKGBook.table.option.select.selectInfoGroupArray = [{
         'text': '技能发动率(2)',
         'value': '14'
     }, {
-        'text': '伤害上升(回合)',
+        'text': '伤害增加',
         'value': '10'
     }, {
         'text': '伤害增加(BOSS)',

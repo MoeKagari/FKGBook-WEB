@@ -9,38 +9,22 @@
 
     <script src="script/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-        (function() {
-            var version = "" + new Date().getTime() * 5;
-            version = version.substr(0, version.length - 7);
-            //防止浏览器缓存
-            //version 每隔2000秒改变一次
-            //2000000*5 = 10000000 有7个0
+        var version = "" + new Date().getTime() * 5;
+        version = version.substr(0, version.length - 7);
+        //防止浏览器缓存
+        //version 每隔2000秒改变一次
+        //2000000*5 = 10000000 有7个0
 
-            for (cssFile of ["fkgbook.css",
-                    "css/table.css", "css/table-option.css",
-                    "css/table-table.css", "css/table-table-head.css", "css/table-table-body.css",
-                    "css/detail.css", "css/detail-1.css", "css/detail-2.css", "css/detail-3.css"
-                ]) {
-                var link = document.createElement("link");
-                link.rel = "stylesheet";
-                link.href = cssFile + "?" + version;
-                document.write(link.outerHTML);
-            }
-
-            for (jsFile of ["fkgbook.js",
-                    "script/data.js", "script/data-chara.js", "script/data-icon.js", "script/data-ability.js",
-                    "script/data-version.js", "script/data-newChara.js",
-                    "script/table.js",
-                    "script/table-option.js", "script/table-option-button.js", "script/table-option-select.js",
-                    "script/table-table.js",
-                    "script/detail.js"
-                ]) {
-                var script = document.createElement("script");
-                script.rel = "text/javascript";
-                script.src = jsFile + "?" + version;
-                document.write(script.outerHTML);
-            }
-        })();
+        for (cssFile of ["fkgbook.css",
+                "css/table.css", "css/table-option.css",
+                "css/table-table.css", "css/table-table-head.css", "css/table-table-body.css",
+                "css/detail.css", "css/detail-1.css", "css/detail-2.css", "css/detail-3.css"
+            ]) {
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = cssFile + "?" + version;
+            document.write(link.outerHTML);
+        }
     </script>
 </head>
 
@@ -136,5 +120,20 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    for (jsFile of ["fkgbook.js",
+            "script/data.js", "script/data-chara.js", "script/data-ability.js", "script/data-version.js", "script/data-newChara.js",
+            "script/table.js",
+            "script/table-option.js", "script/table-option-button.js", "script/table-option-select.js",
+            "script/table-table.js",
+            "script/detail.js"
+        ]) {
+        var script = document.createElement("script");
+        script.rel = "text/javascript";
+        script.src = jsFile + "?" + version;
+        document.write(script.outerHTML);
+    }
+</script>
 
 </html>
