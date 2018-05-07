@@ -88,22 +88,19 @@ FKGBook.table.init = function() {
     FKGBook.table.table.init();
 }
 
-FKGBook.table.refresh = function(first_refresh) {
+FKGBook.table.refresh = function() {
     console.time("table.refresh");
     var filter = FKGBook.table.option.getFilter();
     var visibleIndex = 0;
-    FKGBook.tool.delayLoad(
-        document.getElementsByClassName("chara"), 50,
-        function(chara) {
-            if (filter(chara)) {
-                chara.dataset.row_index = visibleIndex;
-                FKGBook.table.refreshOneRow($(chara), visibleIndex);
-                visibleIndex++;
-            } else {
-                chara.style.display = "none";
-            }
-        }, 50, 0
-    );
+    FKGBook.tool.delayLoad(document.getElementsByClassName("chara"), 400, function(chara) {
+        if (filter(chara)) {
+            chara.dataset.row_index = visibleIndex;
+            FKGBook.table.refreshOneRow($(chara), visibleIndex);
+            visibleIndex++;
+        } else {
+            chara.style.display = "none";
+        }
+    }, 100, 0);
     console.timeEnd("table.refresh");
 }
 

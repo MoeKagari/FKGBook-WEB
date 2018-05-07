@@ -1,6 +1,5 @@
 FKGBook.data.getCharaIconByCharaId = id => {
-    var img = "<img src=" +
-        ("'icon/" + id + ".png'") +
+    var img = "<img src=" + ("'icon/" + id + ".png'") +
         "style='display:block;padding:0px;margin:3px auto;'></img>";
     return img;
 }
@@ -23,7 +22,7 @@ FKGBook.data.init = function() {
 
     //解析 raw 数据
     for (dataLayer0Data of FKGBook.data.chara) {
-        for (dataLayer1Data of dataLayer0Data.group) {
+        for (dataLayer1Data of dataLayer0Data) {
             for (dataLayer2Data of dataLayer1Data.group) {
                 all_chara.push({
                     "currentCharaData": dataLayer2Data,
@@ -33,11 +32,11 @@ FKGBook.data.init = function() {
         }
     }
 
-    //按照图鉴编号排序,相等则按照oeb排序
+    //按照图鉴编号排序,相等则按照id排序
     FKGBook.data.chara = all_chara.sort(function(a, b) {
         var result = b.currentCharaData["bid"] - a.currentCharaData["bid"];
         if (result == 0) {
-            result = a.currentCharaData["oeb"] - b.currentCharaData["oeb"];
+            result = a.currentCharaData["id"] - b.currentCharaData["id"];
         }
         return result;
     });

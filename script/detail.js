@@ -29,10 +29,10 @@ FKGBook.detail.updateCurrentCharaData = function(currentCharaData) {
     $("#detail_chara_move").html(currentCharaData.move);
 
     for (var index = 0; index < 3; index++) {
-        $("#detail_chara_hp_" + index).html(currentCharaData.hp[2 - index]);
-        $("#detail_chara_attack_" + index).html(currentCharaData.attack[2 - index]);
-        $("#detail_chara_defense_" + index).html(currentCharaData.defense[2 - index]);
-        $("#detail_chara_power_" + index).html(currentCharaData.power[2 - index]);
+        $("#detail_chara_hp_" + index).html(currentCharaData.hp[index]);
+        $("#detail_chara_attack_" + index).html(currentCharaData.attack[index]);
+        $("#detail_chara_defense_" + index).html(currentCharaData.defense[index]);
+        $("#detail_chara_power_" + index).html(currentCharaData.power[index]);
     }
 
     $("#detail_chara_skill_name").html(currentCharaData.skill.name);
@@ -76,10 +76,10 @@ FKGBook.detail.updateCurrentCharaData = function(currentCharaData) {
 FKGBook.detail.updateVersionData = function(currentCharaData, charaGroupData) {
     var detail_chara_version_data = $("#detail_chara_version_data");
     detail_chara_version_data.empty();
-    for (var index = 0, length = charaGroupData.group.length; index < length; index++) {
-        var rawCharaGroupDataVersion = charaGroupData.group[index];
+    for (var index = 0, length = charaGroupData.length; index < length; index++) {
+        var rawCharaGroupDataVersion = charaGroupData[index];
 
-        var version = rawCharaGroupDataVersion.chara_version;
+        var version = rawCharaGroupDataVersion.version;
         if (version == "") version = "通常";
         detail_chara_version_data.append(
             "<dt><h3 style='margin:0px;margin-bottom:2px;'>" +
@@ -87,25 +87,24 @@ FKGBook.detail.updateVersionData = function(currentCharaData, charaGroupData) {
             "</h3></dt>"
         );
 
-        var div_chara_icon_group = FKGBook.detail.createNewCharaIconGroup(rawCharaGroupDataVersion);
-        if (index != length - 1) { //最后一个div_chara_icon_group没有margin-bottom
-            div_chara_icon_group.css("margin-bottom", "5px");
+        var chara_icon_group = FKGBook.detail.createNewCharaIconGroup(rawCharaGroupDataVersion);
+        if (index != length - 1) { //最后一个chara_icon_group没有margin-bottom
+            chara_icon_group.css("margin-bottom", "5px");
         }
-        detail_chara_version_data.append(div_chara_icon_group);
+        detail_chara_version_data.append(chara_icon_group);
     }
 }
 
 FKGBook.detail.createNewCharaIconGroup = function(rawCharaGroupDataVersion) {
-    var div_chara_icon_group = $("<dt></dt>");
+    var chara_icon_group = $("<dt></dt>");
 
-    div_chara_icon_group.css({
+    chara_icon_group.css({
         "display": "grid",
-        "grid-template-columns": "repeat(4, 1fr)",
-        "grid-template-rows": "55px"
+        "grid-template-columns": "repeat(4, 1fr)"
     });
     for (charaData of rawCharaGroupDataVersion.group) {
-        div_chara_icon_group.append(FKGBook.tool.append(
-            $(
+        chara_icon_group.append(FKGBook.tool.append(
+            $( //使 chara_icon 居中 , 并且用来突出显示 selected chara
                 "<div style='display:grid;width:100%;height:100%;' class='detail_chara_icon_" +
                 charaData.id + "'></div>"
             ),
@@ -113,23 +112,23 @@ FKGBook.detail.createNewCharaIconGroup = function(rawCharaGroupDataVersion) {
         ));
     }
 
-    return div_chara_icon_group;
+    return chara_icon_group;
 }
 
 FKGBook.detail.createNewCharaIcon = function(charaData) {
-    var div_chara_icon = $("<img></img>");
+    var chara_icon = $("<img></img>");
 
-    div_chara_icon.bind("click", function(event) {
+    chara_icon.bind("click", function(event) {
         FKGBook.detail.updateCurrentCharaData(charaData);
         event.stopPropagation();
     });
-    div_chara_icon.css({
+    chara_icon.css({
         "display": "block",
         "padding": "0px",
         "margin": "auto",
         "cursor": "pointer"
     });
-    div_chara_icon.attr("src", "icon/" + charaData.id + ".png");
+    chara_icon.attr("src", "icon/" + charaData.id + ".png");
 
-    return div_chara_icon;
+    return chara_icon;
 }
