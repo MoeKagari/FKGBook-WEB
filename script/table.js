@@ -92,20 +92,32 @@ FKGBook.table.refresh = function() {
     console.time("table.refresh");
     var filter = FKGBook.table.option.getFilter();
     var visibleIndex = 0;
-    FKGBook.tool.delayLoad(document.getElementsByClassName("chara"), 400, function(chara) {
-        if (filter(chara)) {
-            chara.dataset.row_index = visibleIndex;
-            FKGBook.table.refreshOneRow($(chara), visibleIndex);
+    FKGBook.tool.delayLoad(document.getElementsByClassName("chara"), 400, function(tbody_tr) {
+        var visible = filter(tbody_tr);
+        FKGBook.table.refreshTableRow($(tbody_tr), visible, visibleIndex);
+        if (visible) {
             visibleIndex++;
-        } else {
-            chara.style.display = "none";
         }
     }, 100, 0);
     console.timeEnd("table.refresh");
 }
 
-FKGBook.table.refreshOneRow = function(tbody_tr, row_index) {
-    tbody_tr.css("display", "table-row");
-    tbody_tr.css("background-color", FKGBook.table.table.tableRowBackgroundColor[row_index % 2 == 0 ? "even" : "odd"]);
-    tbody_tr.children(".tableRowNumber").html(row_index + 1);
+FKGBook.table.refreshTableRow = function(chara, visible, visibleIndex) {
+    if (visible) {
+        chara.css("display", "table-row");
+        chara.attr("visibleIndex", visibleIndex);
+        FKGBook.table.refreshTableRowBackground(chara, false);
+        chara.children(".tableRowNumber").html(visibleIndex + 1);
+    } else {
+        chara.css("display", "none");
+    }
+}
+
+FKGBook.table.refreshTableRowBackground = function(chara, hover) {
+    chara.css("background-color", FKGBook.table.table.backgroundColor[
+        //鼠标移入时行颜色
+        hover ? "hover" :
+        //鼠标移出时行颜色,奇偶行不同颜色
+        (chara.attr("visibleIndex") % 2 == 0 ? "even" : "odd")
+    ]);
 }

@@ -9,9 +9,20 @@ var FKGBook = {
             "button": {},
             "select": {}
         },
-        "table": {}
+        "table": {
+            "backgroundColor": { //table background color
+                "header": "#09294a88", //列头
+                "hover": "#99ccff28", //行 - 鼠标移入
+                //行index从0开始
+                "odd": "#99999910", //奇数行
+                "even": "#99999908" //偶数行
+            }
+        }
     },
-    "detail": {},
+    "detail": {
+        "version": {},
+        "update": {}
+    },
     "tool": {}
 }
 
@@ -21,48 +32,43 @@ FKGBook.tool.extraTotalHeight = style =>
     parseInt(style.css("paddingTop")) + parseInt(style.css("paddingBottom"));
 
 FKGBook.tool.append = (parentJqueryObj, childJqueryObj) => {
-    parentJqueryObj.append(childJqueryObj);
+    if (childJqueryObj) {
+        if (Array.isArray(childJqueryObj)) {
+            childJqueryObj.forEach(function(child) {
+                parentJqueryObj.append(child);
+            });
+        } else {
+            parentJqueryObj.append(childJqueryObj);
+        }
+    }
     return parentJqueryObj;
 }
 
 FKGBook.tool.delayLoad = (array, preLoadSize, loadHandler, blockSize, blockLoadDelayTime) => {
-    preLoadSize = Math.min(array.length, preLoadSize);
-
-    for (var index = 0; index < preLoadSize; index++) {
-        loadHandler(array[index], index);
-    }
-
-    var getBlockDelayHandler = (nextHandler, start, end) => {
+    var getBlockDelayHandler = (blockName, nextHandler, start, end) => {
         return function() {
-            setTimeout(function() {
-                start = preLoadSize + start;
-                end = Math.min(array.length, preLoadSize + end);
-                for (var index = start; index < end; index++) {
-                    loadHandler(array[index], index);
-                }
+            console.time(blockName);
+            start = start;
+            end = Math.min(array.length, end);
+            for (var index = start; index < end; index++) {
+                loadHandler(array[index], index);
+            }
+            console.timeEnd(blockName);
 
-                nextHandler();
-            }, blockLoadDelayTime);
+            if (nextHandler != null) {
+                setTimeout(nextHandler, blockLoadDelayTime);
+            }
         };
     };
-    var blockNumber = Math.floor((array.length - preLoadSize) / blockSize);
-    var delayFunction = () => {};
-    for (var index = blockNumber; index >= 0; index--) {
-        delayFunction = getBlockDelayHandler(delayFunction, index * blockSize, (index + 1) * blockSize);
+
+    preLoadSize = Math.min(array.length, preLoadSize);
+
+    var delayFunction = null;
+    for (var index = Math.floor((array.length - preLoadSize) / blockSize); index >= 0; index--) {
+        delayFunction = getBlockDelayHandler(
+            "block" + (index + 1),
+            delayFunction, preLoadSize + index * blockSize, preLoadSize + (index + 1) * blockSize
+        );
     }
-    delayFunction();
-}
-
-window.onload = function() {
-    console.time("data.init");
-    FKGBook.data.init();
-    console.timeEnd("data.init");
-
-    console.time("table.init");
-    FKGBook.table.init();
-    console.timeEnd("table.init");
-
-    console.time("detail.init");
-    FKGBook.detail.init();
-    console.timeEnd("detail.init");
+    getBlockDelayHandler("block0", delayFunction, 0, preLoadSize)();
 }

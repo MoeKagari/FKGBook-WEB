@@ -1,3 +1,7 @@
-.selected_chara{
-    background-color: #404040bb;
+#div_detail_3_content {
+    text-align: center;
+}
+
+.detail_3_title span {
+    cursor: pointer;
 }

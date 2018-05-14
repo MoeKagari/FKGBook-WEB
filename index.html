@@ -15,7 +15,8 @@
         for (cssFile of ["fkgbook.css",
                 "css/table.css", "css/table-option.css",
                 "css/table-table.css", "css/table-table-head.css", "css/table-table-body.css",
-                "css/detail.css", "css/detail-1.css", "css/detail-2.css", "css/detail-3.css"
+                "css/detail.css", "css/detail-1.css", "css/detail-2.css",
+                "css/detail-3.css", "css/detail-3-version.css", "css/detail-3-update.css"
             ]) {
             var link = document.createElement("link");
             link.rel = "stylesheet";
@@ -33,9 +34,9 @@
     <div id="container_table">
         <!-- option -->
         <div id="div_option">
-            <div id="div_option_1" style="text-align:center;margin:0px 0px 0px 0px;"></div>
-            <div id="div_option_2" style="text-align:center;margin:2px 0px 2px 0px;"></div>
-            <div id="div_option_3" style="text-align:center;margin:0px 0px 0px 0px;"></div>
+            <div id="div_option_1"></div>
+            <div id="div_option_2"></div>
+            <div id="div_option_3"></div>
         </div>
         <!-- table -->
         <div id="div_table">
@@ -61,58 +62,63 @@
 
     <!-- container_detail -->
     <div id="container_detail">
-        <div id="div_detail">
-            <div id="div_detail_1">
-                <div id="div_detail_1_content">
-                    <a href="#" title="新窗口打开" target="_blank">
-                        <img id="detail_chara_image_stand_s" style="cursor:pointer;width:329px;height:467px;margin:auto;display:block;" src="" alt="">
-                    </a>
-                    <p id="detail_chara_flower_language" style="margin-bottom:0px;"></p>
-                    <p id="detail_chara_introduction" style="text-indent:2em;margin-top:10px;margin-bottom:0px;"></p>
+        <!-- 使div_detail居中需要父元素display:grid ,但是 fadeIn 是将div的display由none改为block ,所以加入这个中间层 -->
+        <div style="display:grid;width:100%;height:100%;justify-content:center;align-content:center;">
+            <div id="div_detail">
+                <article id="div_detail_1">
+                    <section id="div_detail_1_content">
+                        <a href="#" title="新窗口打开" target="_blank"><img id="detail_chara_image_stand_s" src="#" alt=""></a>
+                        <p id="detail_chara_flower_language"></p>
+                        <p id="detail_chara_introduction"></p>
+                    </section>
+                </article>
+                <div id="div_detail_2">
+                    <article id="div_detail_2_content">
+                        <h1 id="detail_chara_name"></h1>
+                        <section id="detail_chara_base_data">
+                            <b>稀有度</b><b>:</b><b id="detail_chara_rarity"></b>
+                            <b>属性</b><b>:</b><b id="detail_chara_attribute"></b>
+                            <b>国家</b><b>:</b><b id="detail_chara_country"></b>
+                            <b>移动力</b><b>:</b><b id="detail_chara_move"></b>
+                        </section>
+                        <section id="detail_chara_favor_data">
+                            <b class="row_head"></b><b>HP</b><b>攻击力</b><b>防御力</b><b>总合力</b>
+                            <b class="row_head">000%</b><b id="detail_chara_hp_2"></b><b id="detail_chara_attack_2"></b><b id="detail_chara_defense_2"></b><b id="detail_chara_power_2"></b>
+                            <b class="row_head">100%</b><b id="detail_chara_hp_1"></b><b id="detail_chara_attack_1"></b><b id="detail_chara_defense_1"></b><b id="detail_chara_power_1"></b>
+                            <b class="row_head">200%</b><b id="detail_chara_hp_0"></b><b id="detail_chara_attack_0"></b><b id="detail_chara_defense_0"></b><b id="detail_chara_power_0"></b>
+                        </section>
+                        <section id="detail_chara_skill_data">
+                            <b style="margin:0px;" id="detail_chara_skill_name"></b>
+                            <p style="margin:0px;" id="detail_chara_skill_effect"></p>
+                        </section>
+                        <section id="detail_chara_ability_data">
+                            <img id="detail_chara_ability_1_img" src="#" alt="">
+                            <p id="detail_chara_ability_1_description"></p>
+                            <img id="detail_chara_ability_2_img" src="#" alt="">
+                            <p id="detail_chara_ability_2_description"></p>
+                            <img id="detail_chara_ability_3_img" src="#" alt="">
+                            <p id="detail_chara_ability_3_description"></p>
+                            <img id="detail_chara_ability_4_img" src="#" alt="">
+                            <p id="detail_chara_ability_4_description"></p>
+                        </section>
+                    </article>
                 </div>
-            </div>
-            <div id="div_detail_2">
-                <article id="div_detail_2_content">
-                    <h1 id="detail_chara_name" style="text-align:center;"></h1>
-                    <section id="detail_chara_base_data" class="detail_2_child">
-                        <b>稀有度</b><b>:</b><b id="detail_chara_rarity"></b>
-                        <b>属性</b><b>:</b><b id="detail_chara_attribute"></b>
-                        <b>国家</b><b>:</b><b id="detail_chara_country"></b>
-                        <b>移动力</b><b>:</b><b id="detail_chara_move"></b>
-                    </section>
-                    <section id="detail_chara_favor_data" class="detail_2_child">
-                        <b class="row_head"></b><b>HP</b><b>攻击力</b><b>防御力</b><b>总合力</b>
-                        <b class="row_head">000%</b><b id="detail_chara_hp_2"></b><b id="detail_chara_attack_2"></b><b id="detail_chara_defense_2"></b><b id="detail_chara_power_2"></b>
-                        <b class="row_head">100%</b><b id="detail_chara_hp_1"></b><b id="detail_chara_attack_1"></b><b id="detail_chara_defense_1"></b><b id="detail_chara_power_1"></b>
-                        <b class="row_head">200%</b><b id="detail_chara_hp_0"></b><b id="detail_chara_attack_0"></b><b id="detail_chara_defense_0"></b><b id="detail_chara_power_0"></b>
-                    </section>
-                    <section id="detail_chara_skill_data" class="detail_2_child">
-                        <p style="margin:0px;" id="detail_chara_skill_name"></p>
-                        <p style="margin:0px;" id="detail_chara_skill_effect"></p>
-                    </section>
-                    <section id="detail_chara_ability_data" class="detail_2_child end">
-                        <img id="detail_chara_ability_1_img" src="" alt="chara_ability_1_img">
-                        <p id="detail_chara_ability_1_description"></p>
-                        <img id="detail_chara_ability_2_img" src="" alt="chara_ability_2_img">
-                        <p id="detail_chara_ability_2_description"></p>
-                        <img id="detail_chara_ability_3_img" src="" alt="chara_ability_3_img">
-                        <p id="detail_chara_ability_3_description"></p>
-                        <img id="detail_chara_ability_4_img" src="" alt="chara_ability_4_img">
-                        <p id="detail_chara_ability_4_description"></p>
-                    </section>
-                </article>
-            </div>
-            <div id="div_detail_3">
-                <article id="div_detail_3_content">
-                    <section>
-                        <h2 style="text-align:left;margin-bottom:5px;">Version</h2>
-                        <dl id="detail_chara_version_data" style="margin-top:0px;"></dl>
-                    </section>
-                    <section style="display:none;">
-                        <h2 style="text-align:left;margin-bottom:5px;">About</h2>
-                        <dl id="detail_chara_about_data" style="margin-top:0px;"></dl>
-                    </section>
-                </article>
+                <div id="div_detail_3">
+                    <div id="div_detail_3_content">
+                        <article id="detail_chara_version_container">
+                            <h1 id="detail_chara_version_title" class="detail_3_title">
+                                <span>Version</span>
+                            </h1>
+                            <section id="detail_chara_version_data"></section>
+                        </article>
+                        <article id="detail_chara_update_container">
+                            <h1 id="detail_chara_update_title" class="detail_3_title">
+                                <span>Update</span>
+                            </h1>
+                            <section id="detail_chara_update_data"></section>
+                        </article>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -120,16 +126,31 @@
 
 <script type="text/javascript">
     for (jsFile of ["fkgbook.js",
-            "script/data.js", "script/data-chara.js", "script/data-ability.js", "script/data-version.js", "script/data-newChara.js",
+            "script/data.js", "script/data-chara.js", "script/data-ability.js", "script/data-version.js", "script/data-update.js",
             "script/table.js",
             "script/table-option.js", "script/table-option-button.js", "script/table-option-select.js",
             "script/table-table.js",
-            "script/detail.js"
+            "script/detail.js", "script/detail-version.js", "script/detail-update.js"
         ]) {
         var script = document.createElement("script");
         script.rel = "text/javascript";
         script.src = jsFile + "?" + version;
         document.write(script.outerHTML);
+    }
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        console.time("data.init");
+        FKGBook.data.init();
+        console.timeEnd("data.init");
+
+        console.time("table.init");
+        FKGBook.table.init();
+        console.timeEnd("table.init");
+
+        console.time("detail.init");
+        FKGBook.detail.init();
+        console.timeEnd("detail.init");
     }
 </script>
 

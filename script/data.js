@@ -23,7 +23,7 @@ FKGBook.data.init = function() {
     //解析 raw 数据
     for (dataLayer0Data of FKGBook.data.chara) {
         for (dataLayer1Data of dataLayer0Data) {
-            for (dataLayer2Data of dataLayer1Data.group) {
+            for (dataLayer2Data of dataLayer1Data.charas) {
                 all_chara.push({
                     "currentCharaData": dataLayer2Data,
                     "charaGroupData": dataLayer0Data

@@ -1,9 +1,16 @@
 #container_table {
-    /* 默认显示 */
     display: block;
     margin: 5px 5px;
     height: calc(100% - 5px - 5px);
     width: calc(100% - 5px - 5px);
     position: fixed;
     z-index: 0;
+}
+
+#container_table>div {
+    margin-top: 5px;
+}
+
+#container_table>div:first-child {
+    margin-top: 0px;
 }

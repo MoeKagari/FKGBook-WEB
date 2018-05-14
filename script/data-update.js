@@ -1,0 +1,1 @@
+FKGBook.data.update = [{"date":["2018","5","14","星期一"],"detail":{}}];

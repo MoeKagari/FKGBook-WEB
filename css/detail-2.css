@@ -1,9 +1,13 @@
-.detail_2_child {
+#detail_chara_name{
+    text-align: center;
+}
+
+#div_detail_2_content section {
     width: 100%;
     margin: 0px auto 15px auto;
 }
 
-.detail_2_child.end {
+#div_detail_2_content section:last-child {
     margin: 0px auto;
 }
 

@@ -193,14 +193,14 @@ FKGBook.table.option.button.init = function() {
             }
             parent.append(input);
             if (buttonInfo.text) {
-                parent.append("<label for='" + buttonInfo.value + "'>" + buttonInfo.text + "</label>");
+                parent.append("<label style='vertical-align:middle;' for='" + buttonInfo.value + "'>" + buttonInfo.text + "</label>");
             }
         }
     }
 
     //默认选择
     $("#haveEventChara").prop("checked", true);
-    $(".option_oeb_normal").prop("checked", true);
+    $("#mostLevelChara").prop("checked", true);
 }
 
 FKGBook.table.option.button.getFilter = function() {

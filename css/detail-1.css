@@ -1,0 +1,16 @@
+#detail_chara_image_stand_s {
+    cursor: pointer;
+    width: 329px;
+    height: 467px;
+    margin: 18px auto;
+    display: block;
+}
+
+#detail_chara_flower_language {
+    margin: 0px;
+}
+
+#detail_chara_introduction {
+    text-indent: 2em;
+    margin: 10px 0px 0px 0px;
+}

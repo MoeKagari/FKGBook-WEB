@@ -1,0 +1,8 @@
+#detail_chara_version_data {
+    display: grid;
+    grid-gap: 5px 0px;
+}
+
+.selected_chara {
+    background-color: #404040bb;
+}

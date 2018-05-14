@@ -1,3 +1,5 @@
 #div_option {
-    margin: 0px 0px 5px 0px;
+    display: grid;
+    grid-gap: 2px 0px;
+    text-align: center;
 }
