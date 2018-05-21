@@ -1,1 +1,1 @@
-FKGBook.data.update = [{"date":["2018","5","14","星期一"],"detail":{}}];
+FKGBook.data.update = [{"date":["2018","5","14","星期一"],"detail":{"sublimation":[{"charas":[111111]},{"charas":[111111]},{"charas":[111111]},{"charas":[111111]}]}}];
