@@ -1,1 +1,1 @@
-FKGBook.data.version = "GMT+08:00 2018-05-22 01:54:22";
+FKGBook.data.version = "GMT+08:00 2018-06-04 19:11:13";
